@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypted</title>
+</head>
+<body>
+    <h1>Hashing</h1>
+    <div>
+        <form th:action="@{/app/hash}" method="POST" enctype="multipart/form-data">
+            <label>Archivo</label><br>
+            <select name="algorithm">
+                <option th:value="SHA-256">SHA-256</option>
+                <option th:value="SHA-512">SHA-512</option>
+            </select><br>
+            <input th:value="${archivos}" type="file" name="archivos"><br>
+            <button type="submit">getSHA</button>
+        </form>
+
+        <h4 th:text="${sha512}"> </h4>
+        <h4 th:text="${sha256}"> </h4>
+        <h4 th:text="${algorithm}"></h4>
+    </div>
+</body>
+</html>
