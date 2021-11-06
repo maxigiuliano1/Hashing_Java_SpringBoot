@@ -1,5 +1,7 @@
 package com.example.encrypted.controller;
 
+import java.io.File;
+
 import com.example.encrypted.model.Encrypted;
 import com.example.encrypted.service.EncryptedService;
 
@@ -26,17 +28,23 @@ public class EncryptedController {
     }
 
     @PostMapping("/hash")
-    public String setSha( @RequestParam("archivos") MultipartFile file, RedirectAttributes model){
+    public ResponseEntity<Encrypted> setSha( @RequestParam("archivos") MultipartFile file, RedirectAttributes model){
         String fileName = file.getOriginalFilename();
+        //String filePath = ClassLoader.getSystemResource(".../texto.txt").getFile();
         Encrypted encrydted = null;
-
+        /*
         encrydted = encryptedService.SHA512(fileName);
         model.addFlashAttribute("sha512", encrydted.getDocuments());
         encrydted = encryptedService.SHA256(fileName);
+        model.addFlashAttribute("sha256", encrydted.getDocuments());*/
+
+        encrydted = encryptedService.sha256(fileName);
         model.addFlashAttribute("sha256", encrydted.getDocuments());
-        model.addAttribute("algorithm", encrydted.getAlgorithm());
+
+        encrydted = encryptedService.sha512(fileName);
+        model.addFlashAttribute("sha512", encrydted.getDocuments());
+        System.out.println(fileName);
         System.out.println(encrydted.getDocuments());
-        System.out.println(encrydted.getAlgorithm());
-        return "redirect:/app/";
+        return ResponseEntity.ok(encrydted);
     }
 }

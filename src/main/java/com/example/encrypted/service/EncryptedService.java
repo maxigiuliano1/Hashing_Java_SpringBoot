@@ -1,18 +1,53 @@
 package com.example.encrypted.service;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.encrypted.model.Encrypted;
+import com.google.common.hash.Hashing;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class EncryptedService {
+
+    public Encrypted sha256(final String strText){
+        Encrypted encrypted = null;
+        String sha256hex = Hashing.sha256()
+        .hashString(strText, StandardCharsets.UTF_8)
+        .toString();
+        List<String> list = new ArrayList<String>();
+        list.add("fileName: "+ strText);
+        list.add("hash: " + sha256hex);
+        encrypted = new Encrypted("SHA256", list);
+        return encrypted;
+    }
     
+    public Encrypted sha512(final String strText){
+        Encrypted encrypted = null;
+        String sha512hex = Hashing.sha512()
+        .hashString(strText, StandardCharsets.UTF_8)
+        .toString();
+        List<String> list = new ArrayList<String>();
+        list.add("fileName: "+ strText);
+        list.add("hash: " + sha512hex);
+        encrypted = new Encrypted("SHA512", list);
+        return encrypted;
+    }
+
+    public void selectedHash(final String algorithm, final String strText){
+        if(algorithm == "SHA256"){
+            sha256(strText);
+        }else{
+            sha512(strText);
+        }
+    }
+   
+  /**  
   public Encrypted SHA256(final String strText){
     return SHA(strText, "SHA-256");
   }
@@ -25,8 +60,9 @@ public class EncryptedService {
       String name = file.getOriginalFilename();
       String filePath = ClassLoader.getSystemResource(name).getFile();
       return filePath;
-  }
+  } */
 
+  /*
   public Encrypted SHA(final String strText, final String strType){
     // valor de devolución
     String strResult = null; 
@@ -65,6 +101,6 @@ public class EncryptedService {
       }
     }
     return encrypted;
-  }
+  }*/
 
 }
