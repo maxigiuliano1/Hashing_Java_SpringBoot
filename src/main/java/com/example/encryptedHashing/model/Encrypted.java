@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Encrypted {
     private String algorithm;
-    private List<String> documents;
+    private List<EncryptedDates> documents;
 
-    public Encrypted(String algorithm, List<String> documents) {
+    public Encrypted(String algorithm, List<EncryptedDates> documents) {
         super();
         this.algorithm = algorithm;
         this.documents = documents;
@@ -18,10 +18,10 @@ public class Encrypted {
     public void setAlgorithm(String algorithm) {
         this.algorithm = algorithm;
     }
-    public List<String> getDocuments() {
+    public List<EncryptedDates> getDocuments() {
         return documents;
     }
-    public void setDocuments(List<String> documents) {
+    public void setDocuments(List<EncryptedDates> documents) {
         this.documents = documents;
     }
 }
