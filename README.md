@@ -24,7 +24,7 @@ La respuesta del endpoint debería ser similar a esta:
 }
 ```
 
-Para ejecutar el programa 
+Para ejecutar el programa:
 * clone el repositorio 
 * ejecutelo con el comando: mvn spring-boot:run
 * primero se instalaran las dependencias correspondientes para que el proyecto funcione correctamente
