@@ -30,5 +30,5 @@ Para ejecutar el programa:
 * ejecutelo con el comando: mvn spring-boot:run
 * se instalaran las dependencias correspondientes para que el proyecto funcione correctamente
 * abra postman, coloque la url: localhost:8080/api/hash?algorithm=SHA*** con el endpoint POST
-* reemplaze los *** por el algoritmo que desee usar para encriptar SHA256 o SHA512, en caso de que elija otro no se podra encriptar recibira como respuesta un mensaje de aviso
-* seleccione los archivos que desee encriptar y ejecute el programa
+* reemplaze los *** por el algoritmo que desee usar para encriptar SHA256 o SHA512, en caso de que elija otro no se podra encriptar, recibira como respuesta un mensaje de aviso
+* seleccione los archivos que desee encriptar y presione enviar para recibir la respuesta con el/los archivos encriptados
